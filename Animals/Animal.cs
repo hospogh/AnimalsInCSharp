@@ -12,14 +12,32 @@ namespace Animals
 {
     abstract class Animal
     {
-        abstract public string Name { get; set; }
+        virtual public string Name { get; set; }
         abstract public int Legs { get; }//abstract public/*private ?*/ int Legs { get; /*private ?*/set;}
+
+
         public void Speak()
         {
             SoundPlayer player = new SoundPlayer(Path);
             player.PlaySync();
         }
         protected string Path { get; set; }
+    }
+
+    abstract class Mammal : Animal
+    {
+        public override int Legs
+        {
+            get
+            {
+                return 4;
+            }
+        }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
     }
 
     class Cat : Animal
