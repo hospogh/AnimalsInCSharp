@@ -12,20 +12,21 @@ namespace Animals
 {
     abstract class Animal
     {
-        virtual public string Name { get; set; }
-        abstract public int Legs { get; }//abstract public/*private ?*/ int Legs { get; /*private ?*/set;}
+        public string Name { get; set; }
+        public abstract int Legs { get; }
 
-
-        public void Speak()
+        public Animal(string name)
         {
-            SoundPlayer player = new SoundPlayer(Path);
-            player.PlaySync();
+            this.Name = name;
         }
-        protected string Path { get; set; }
+        public abstract void Speak();
     }
 
-    abstract class Mammal : Animal
+
+    class Cat : Animal
     {
+        public Cat(String name) : base(name) { }
+
         public override int Legs
         {
             get
@@ -33,60 +34,64 @@ namespace Animals
                 return 4;
             }
         }
-        public override string ToString()
-        {
-            return base.ToString();
-        }
 
-    }
-
-    class Cat : Animal
-    {
-        public Cat(String name)
+        public override void Speak()
         {
-            Legs = 4;
-            Name = name;
-            Path = @"C:\Users\hovse_000\Documents\Visual Studio 2015\Projects\Animals\Animals\sounds\cat\cat.wav";
+            Console.WriteLine("Meoow!!");
         }
-        public override int Legs { get; }
-        public override string Name { get; set; }
     }
 
     class Dog : Animal
     {
-        public Dog(String name)
+        public Dog(String name) : base(name) { }
+
+        public override int Legs
         {
-            Name = name;
-            Legs = 4;
-            Path = @"C:\Users\hovse_000\Documents\Visual Studio 2015\Projects\Animals\Animals\sounds\dog\Dog Growling And Barking-SoundBible.com-883632423.wav";
+            get
+            {
+                return 4;
+            }
         }
-        public override int Legs { get; }
-        public override string Name { get; set; }
+
+        public override void Speak()
+        {
+            Console.WriteLine("HafHaf!!");
+        }
     }
 
     class Bird : Animal
     {
-        public Bird(String name)
+        public Bird(String name) : base(name) { }
+        
+        public override int Legs
         {
-            Legs = 2;
-            Name = name;
-            Path = @"C:\Users\hovse_000\Documents\Visual Studio 2015\Projects\Animals\Animals\sounds\bird\killdeer_song-Mike_Koenig-1144525481.wav";
+            get
+            {
+                return 4;
+            }
         }
-        public override int Legs { get; }
-        public override string Name { get; set; }
+
+        public override void Speak()
+        {
+            Console.WriteLine("TsivTsiv!!");
+        }
     }
 
     class Lion : Animal
     {
-        public Lion(String name)
-        {
-            Name = name;
-            Legs = 4;
-            Path = @"C:\Users\hovse_000\Documents\Visual Studio 2015\Projects\Animals\Animals\sounds\lion\Lion Roar-SoundBible.com-718441804.wav";
-        }
-        public override int Legs { get; }
-        public override string Name { get; set; }
+        public Lion(String name) : base(name) { }
 
+        public override int Legs
+        {
+            get
+            {
+                return 4;
+            }
+        }
+
+        public override void Speak()
+        {
+            Console.WriteLine("RaRaRa!!");
+        }
     }
 }
-//sounds from http://soundbible.com/
